@@ -15,6 +15,9 @@ def click_equal(event):
     entry.delete(0, tk.END)
     entry.insert(tk.END, res)
 
+def click_clear(event):
+    entry.delete(0, tk.END)
+
 root = tk.Tk()
 root.geometry("500x600")
 
@@ -34,6 +37,11 @@ for i, num in enumerate(numbers + decimal_point, 1):
     if i%3 == 0:
         r1 += 1
         c1 = 0
+
+btn = tk.Button(root, text = f"C", font = ("", 30), width = 4, height = 2)
+btn.bind("<1>", click_clear)
+btn.grid(row = 0, column = 4)
+
 
 c2 = 4
 r2 = 1
