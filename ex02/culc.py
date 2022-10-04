@@ -11,6 +11,10 @@ def click_number(event):
 
 def click_equal(event):
     eqn = entry.get()
+    if "×" in eqn:
+        eqn.replace("×", "*")
+    if "÷" in eqn:
+        eqn.replace("÷", "/")
     res = eval(eqn)
     entry.delete(0, tk.END)
     entry.insert(tk.END, res)
