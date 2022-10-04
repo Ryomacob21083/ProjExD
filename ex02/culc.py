@@ -5,17 +5,19 @@ import tkinter.messagebox as tkm
 def click_number(event):
     btn = event.widget
     num = btn["text"]
+    if num == "×":
+        num = "*"
+    if num == "÷":
+        num = "/"
     entry.insert(tk.END, num)
 
 
 def click_equal(event):
     eqn = entry.get()
-    print(eqn)
     #if "×" in str(eqn):
     #    str(eqn).replace("×", "*")
     #if "÷" in str(eqn):
     #    eqn = 5
-    print(eqn)
     res = eval(eqn)
     entry.delete(0, tk.END)
     entry.insert(tk.END, res)
