@@ -34,7 +34,7 @@ r1 = 1
 numbers = list(range(9, -1, -1))
 decimal_point = ["."]
 for i, num in enumerate(numbers + decimal_point, 1):
-    btn = tk.Button(root, text = f"{num}", font = ("", 30), width = 4, height = 2)
+    btn = tk.Button(root, text = f"{num}", font = ("", 30), bg = "red", width = 4, height = 2)
     btn.bind("<1>", click_number)
     btn.grid(row = r1, column = c1)
     c1 += 1
@@ -52,13 +52,13 @@ c2 = 4
 r2 = 1
 operators = ["+", "-", "×", "÷"]
 for i in operators:
-    btn = tk.Button(root, text = f"{i}", font = ("", 30), width = 4, height = 2)
+    btn = tk.Button(root, text = f"{i}", font = ("", 30), bg = "yellow", width = 4, height = 2)
     btn.bind("<1>", click_number)
     btn.grid(row = r2, column = c2)
     r2 += 1
 
 
-btn = tk.Button(root, text = f"=", font = ("", 30), width = 4, height = 2)
+btn = tk.Button(root, text = f"=", font = ("", 30), bg = "blue", width = 4, height = 2)
 btn.bind("<1>", click_equal)
 btn.grid(row = r1, column = c1)
 
