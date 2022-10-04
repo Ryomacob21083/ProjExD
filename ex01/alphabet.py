@@ -42,11 +42,12 @@ def kaitou():
         print("--------------------------------------------")
 
 
-alphabet  =[chr(i+65) for i in range(num_of_alphabet)]
-while judge == 1:
-    shutudai(alphabet)
-    print("\n")
-    kaitou()
-    count += 1
-    if count == 2:
-        break
+if __name__ == "__main__":
+    alphabet  =[chr(i+65) for i in range(num_of_alphabet)]
+    while judge == 1:
+        shutudai(alphabet)
+        print("\n")
+        kaitou()
+        count += 1
+        if count == 2:
+            break
