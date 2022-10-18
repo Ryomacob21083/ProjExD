@@ -37,6 +37,8 @@ if __name__ == "__main__":
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
     main_proc()
-    mm.make_maze(15, 9)
+
+    maze_list = mm.make_maze(15, 9)
+    mm.show_maze(canv, maze_list)
 
     root.mainloop()
