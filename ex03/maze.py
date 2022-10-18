@@ -20,7 +20,7 @@ def main_proc():
     if key == "Right":
         mx += 1
 
-    cx, cy = mx*100, my*100
+    cx, cy = mx*100 + 50, my*100 + 50
     canv.coords("こうかとん", cx, cy)
     root.after(100, main_proc)
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     tori = tk.PhotoImage(file="ex03/fig/3.png")
     mx, my = 1, 1
-    cx, cy = mx*100, my*100
+    cx, cy = mx*100 + 50, my*100 + 50
     
     key = ""  #現在押されているキーを表す
     root.bind("<KeyPress>", key_down)
