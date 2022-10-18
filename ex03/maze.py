@@ -10,7 +10,7 @@ def key_up(event):
     global key
     key = ""
 
-def change_photo():
+def change_photo(): #画像の切り替え
     global index
     canv.delete("こうかとん")
     index =(index+1)%len(bards)
@@ -20,7 +20,7 @@ def main_proc():
     global mx, my, cx, cy, index
     if key == "Up":
         my -= 1
-        change_photo()
+        change_photo() 
     if key == "Down":
         my += 1
         change_photo()
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     maze_list = mm.make_maze(15, 9)
     mm.show_maze(canv, maze_list)
 
-    bards = [tk.PhotoImage(file="ex03/fig/1.png"),
+    bards = [tk.PhotoImage(file="ex03/fig/1.png"), #画像のリスト
              tk.PhotoImage(file="ex03/fig/2.png"),
              tk.PhotoImage(file="ex03/fig/3.png"),
              tk.PhotoImage(file="ex03/fig/4.png"),
