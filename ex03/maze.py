@@ -32,7 +32,7 @@ def main_proc():
         change_photo()
     if maze_list[my][mx] == 0:
         cx, cy = mx*100+50, my*100+50
-    else:
+    else:  #壁の場合
         if key == "Up":
             my += 1
         if key == "Down":
@@ -73,4 +73,3 @@ if __name__ == "__main__":
     canv.create_image(cx, cy, image=bards[index], tag="こうかとん")
     main_proc()
     root.mainloop()
-    
