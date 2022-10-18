@@ -1,5 +1,6 @@
 import tkinter as tk
 import maze_maker as mm
+import random
 
 def key_down(event):
     global key
@@ -9,16 +10,26 @@ def key_up(event):
     global key
     key = ""
 
+def change_photo():
+    global index
+    canv.delete("こうかとん")
+    index =(index+1)%len(bards)
+    canv.create_image(cx, cy, image=bards[index], tag="こうかとん")
+
 def main_proc():
-    global mx, my, cx, cy
+    global mx, my, cx, cy, index
     if key == "Up":
         my -= 1
+        change_photo()
     if key == "Down":
         my += 1
+        change_photo()
     if key == "Left":
         mx -= 1
+        change_photo()
     if key == "Right":
         mx += 1
+        change_photo()
     if maze_list[my][mx] == 0:
         cx, cy = mx*100+50, my*100+50
     else:
@@ -30,10 +41,8 @@ def main_proc():
             mx += 1
         if key == "Right":
             mx -= 1
-    
     canv.coords("こうかとん", cx, cy)
     root.after(100, main_proc)
-
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -41,9 +50,9 @@ if __name__ == "__main__":
     canv = tk.Canvas(root, width=1500, height=900, background="black")
     canv.pack()
 
-    tori = tk.PhotoImage(file="ex03/fig/3.png")
     mx, my = 1, 1
     cx, cy = mx*100 + 50, my*100 + 50
+    index = 0
     
     key = ""  #現在押されているキーを表す
     root.bind("<KeyPress>", key_down)
@@ -51,7 +60,16 @@ if __name__ == "__main__":
 
     maze_list = mm.make_maze(15, 9)
     mm.show_maze(canv, maze_list)
-    main_proc()
 
-    canv.create_image(cx, cy, image=tori, tag="こうかとん")
+    bards = [tk.PhotoImage(file="ex03/fig/1.png"),
+             tk.PhotoImage(file="ex03/fig/2.png"),
+             tk.PhotoImage(file="ex03/fig/3.png"),
+             tk.PhotoImage(file="ex03/fig/4.png"),
+             tk.PhotoImage(file="ex03/fig/5.png"),
+             tk.PhotoImage(file="ex03/fig/6.png"),
+             tk.PhotoImage(file="ex03/fig/7.png"),
+             tk.PhotoImage(file="ex03/fig/8.png"),
+             tk.PhotoImage(file="ex03/fig/9.png")]
+    canv.create_image(cx, cy, image=bards[index], tag="こうかとん")
+    main_proc()
     root.mainloop()
