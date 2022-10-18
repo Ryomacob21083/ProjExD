@@ -73,3 +73,4 @@ if __name__ == "__main__":
     canv.create_image(cx, cy, image=bards[index], tag="こうかとん")
     main_proc()
     root.mainloop()
+    
