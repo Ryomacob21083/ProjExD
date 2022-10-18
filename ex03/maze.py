@@ -10,7 +10,7 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global mx, my
+    global mx, my, cx, cy
     if key == "Up":
         my -= 1
     if key == "Down":
@@ -19,8 +19,18 @@ def main_proc():
         mx -= 1
     if key == "Right":
         mx += 1
-
-    cx, cy = mx*100 + 50, my*100 + 50
+    if maze_list[my][mx] == 0:
+        cx, cy = mx*100+50, my*100+50
+    else:
+        if key == "Up":
+            my += 1
+        if key == "Down":
+            my -= 1
+        if key == "Left":
+            mx += 1
+        if key == "Right":
+            mx -= 1
+    
     canv.coords("こうかとん", cx, cy)
     root.after(100, main_proc)
 
@@ -38,10 +48,11 @@ if __name__ == "__main__":
     key = ""  #現在押されているキーを表す
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
-    main_proc()
 
     maze_list = mm.make_maze(15, 9)
     mm.show_maze(canv, maze_list)
+    main_proc()
+    
     canv.create_image(cx, cy, image=tori, tag="こうかとん")
 
     root.mainloop()
