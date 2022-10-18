@@ -52,7 +52,6 @@ if __name__ == "__main__":
     maze_list = mm.make_maze(15, 9)
     mm.show_maze(canv, maze_list)
     main_proc()
-    
-    canv.create_image(cx, cy, image=tori, tag="こうかとん")
 
+    canv.create_image(cx, cy, image=tori, tag="こうかとん")
     root.mainloop()
