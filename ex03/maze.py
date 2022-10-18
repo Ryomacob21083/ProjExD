@@ -10,15 +10,17 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global cx, cy
+    global mx, my
     if key == "Up":
-        cy -= 20
+        my -= 1
     if key == "Down":
-        cy += 20
+        my += 1
     if key == "Left":
-        cx -= 20
+        mx -= 1
     if key == "Right":
-        cx += 20
+        mx += 1
+
+    cx, cy = mx*100, my*100
     canv.coords("こうかとん", cx, cy)
     root.after(100, main_proc)
 
@@ -30,9 +32,9 @@ if __name__ == "__main__":
     canv.pack()
 
     tori = tk.PhotoImage(file="ex03/fig/3.png")
-    cx, cy = 300, 400
-    canv.create_image(cx, cy, image=tori, tag="こうかとん")
-
+    mx, my = 1, 1
+    cx, cy = mx*100, my*100
+    
     key = ""  #現在押されているキーを表す
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
@@ -40,5 +42,6 @@ if __name__ == "__main__":
 
     maze_list = mm.make_maze(15, 9)
     mm.show_maze(canv, maze_list)
+    canv.create_image(cx, cy, image=tori, tag="こうかとん")
 
     root.mainloop()
