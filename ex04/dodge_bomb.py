@@ -67,11 +67,15 @@ def main(): #練習１
                 tori_rct.centery -= 1
 
         scrn_sfc.blit(tori_sfc, tori_rct) #練習３
-        yoko, tate = check_bound(bomb_rct, scrn_rct)#練習⑦
+        yoko, tate = check_bound(bomb_rct, scrn_rct)#練習7
         vx *= yoko
         vy *= tate
         bomb_rct.move_ip(vx, vy)          #練習６
         scrn_sfc.blit(bomb_sfc, bomb_rct) #練習５
+
+        #練習８
+        if tori_rct.colliderect(bomb_rct):
+            return
         pg.display.update()
         clock.tick(1000)
     
