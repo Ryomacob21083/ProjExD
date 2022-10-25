@@ -4,8 +4,6 @@ from random import randint
 import tkinter as tk
 import tkinter.messagebox as tkm
 
-life = 3
-
 def check_bound(obj_rct, scr_rct):
     #obj_rct:こうかとんrectまたは爆弾rect
     #scr_rct:スクリーンrect
@@ -20,7 +18,6 @@ def check_bound(obj_rct, scr_rct):
 
 
 def main(): 
-    global life
     root = tk.Tk()
     root.withdraw()
     pg.display.set_caption("逃げろ！こうかとん")    ##タイトルバーに「初めての...」を表示
@@ -61,14 +58,14 @@ def main():
         yoko, tate = check_bound(tori_rct, scrn_rct)  
         if yoko == -1:
             if key_states[pg.K_LEFT]:
-                tori_rct.centerx += 1
+                tori_rct.centerx += 5
             if key_states[pg.K_RIGHT]:
-                tori_rct.centerx -= 1
+                tori_rct.centerx -= 5
         if tate == -1:
             if key_states[pg.K_UP]:
-                tori_rct.centery += 1
+                tori_rct.centery += 5
             if key_states[pg.K_DOWN]:
-                tori_rct.centery -= 1
+                tori_rct.centery -= 5
 
         scrn_sfc.blit(tori_sfc, tori_rct) 
         yoko, tate = check_bound(bomb_rct, scrn_rct)
@@ -87,11 +84,12 @@ def main():
         bomb_rct.move_ip(vx, vy)          
         scrn_sfc.blit(bomb_sfc, bomb_rct) 
 
-        if tori_rct.colliderect(bomb_rct):
-            life -= 1                
-            if life == 0:
-                tkm.showinfo("GANE OVER", "また挑戦してね")
-                return
+        if tori_rct.colliderect(bomb_rct):                
+            tkm.showinfo("GANE OVER", "また挑戦してね")
+            return
+        if pg.time.get_ticks() >= 3000:
+            tkm.showinfo("GANE CREAR", "おめでとう！！")
+
 
         pg.display.update()
         clock.tick(1000)
