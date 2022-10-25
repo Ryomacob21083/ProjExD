@@ -2,6 +2,18 @@ import pygame as pg
 import sys
 from random import randint
 
+def check_bound(obj_rct, scr_rct): #練習７
+    #obj_rct:こうかとんrectまたは爆弾rect
+    #scr_rct:スクリーンrect
+
+    yoko, tate = +1, +1
+    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
+        yoko = -1
+    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
+        tate = -1
+    return yoko, tate
+
+
 def main(): #練習１
     pg.display.set_caption("逃げろ！こうかとん")    ##タイトルバーに「初めての...」を表示
     scrn_sfc = pg.display.set_mode((1600, 900)) ## 800×600の画面surfaceを生成
@@ -22,7 +34,7 @@ def main(): #練習１
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0, scrn_rct.width)
     bomb_rct.centery = randint(0, scrn_rct.height)
-    #練習⑥
+    #練習6
     vx, vy = +1, +1
 
 
@@ -42,10 +54,24 @@ def main(): #練習１
             tori_rct.centerx -= 1
         if key_states[pg.K_RIGHT]:
             tori_rct.centerx += 1
-         
-        scrn_sfc.blit(tori_sfc, tori_rct) #練習５
-        bomb_rct.move_ip(vx, vy)
-        scrn_sfc.blit(bomb_sfc, bomb_rct)
+        yoko, tate = check_bound(tori_rct, scrn_rct)   #練習7
+        if yoko == -1:
+            if key_states[pg.K_LEFT]:
+                tori_rct.centerx += 1
+            if key_states[pg.K_RIGHT]:
+                tori_rct.centerx -= 1
+        if tate == -1:
+            if key_states[pg.K_UP]:
+                tori_rct.centery += 1
+            if key_states[pg.K_DOWN]:
+                tori_rct.centery -= 1
+
+        scrn_sfc.blit(tori_sfc, tori_rct) #練習３
+        yoko, tate = check_bound(bomb_rct, scrn_rct)#練習⑦
+        vx *= yoko
+        vy *= tate
+        bomb_rct.move_ip(vx, vy)          #練習６
+        scrn_sfc.blit(bomb_sfc, bomb_rct) #練習５
         pg.display.update()
         clock.tick(1000)
     
