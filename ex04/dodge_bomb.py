@@ -4,6 +4,7 @@ from random import randint
 import tkinter as tk
 import tkinter.messagebox as tkm
 
+
 def check_bound(obj_rct, scr_rct):
     #obj_rct:こうかとんrectまたは爆弾rect
     #scr_rct:スクリーンrect
@@ -13,7 +14,6 @@ def check_bound(obj_rct, scr_rct):
         yoko = -1
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
         tate = -1
-
     return yoko, tate
 
 
@@ -37,7 +37,7 @@ def main():
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0, scrn_rct.width)
     bomb_rct.centery = randint(0, scrn_rct.height)
-
+    
     vx, vy = +1, +1
     clock = pg.time.Clock()
     while True: 
@@ -92,6 +92,7 @@ def main():
 
         pg.display.update()
         clock.tick(1000)
+
 
 if __name__ == "__main__":
     pg.init()           ##モジュールを初期化
