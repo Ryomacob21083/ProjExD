@@ -90,11 +90,8 @@ def main():
         if pg.time.get_ticks() >= 3000:
             tkm.showinfo("GANE CREAR", "おめでとう！！")
 
-
         pg.display.update()
         clock.tick(1000)
-    
-    
 
 if __name__ == "__main__":
     pg.init()           ##モジュールを初期化
