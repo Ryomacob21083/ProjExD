@@ -22,6 +22,8 @@ def main(): #練習１
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0, scrn_rct.width)
     bomb_rct.centery = randint(0, scrn_rct.height)
+    #練習⑥
+    vx, vy = +1, +1
 
 
     clock = pg.time.Clock()
@@ -41,7 +43,8 @@ def main(): #練習１
         if key_states[pg.K_RIGHT]:
             tori_rct.centerx += 1
          
-        scrn_sfc.blit(tori_sfc, tori_rct)
+        scrn_sfc.blit(tori_sfc, tori_rct) #練習５
+        bomb_rct.move_ip(vx, vy)
         scrn_sfc.blit(bomb_sfc, bomb_rct)
         pg.display.update()
         clock.tick(1000)
