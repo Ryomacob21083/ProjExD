@@ -27,6 +27,9 @@ import random
 import os
 import tkinter as tk
 import tkinter.messagebox as tkm
+
+
+# import basic pygame modules
 import pygame as pg
 
 # see if we can load more than standard BMP
