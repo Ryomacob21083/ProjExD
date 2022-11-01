@@ -37,7 +37,7 @@ def main():
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0, scrn_rct.width)
     bomb_rct.centery = randint(0, scrn_rct.height)
-    
+
     vx, vy = +1, +1
     clock = pg.time.Clock()
     while True: 
