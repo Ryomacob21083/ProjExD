@@ -241,8 +241,6 @@ class Mode_Change:
             self.s_image = "shot.gif"
         
 
-
-
 def main(winstyle=0):
     global SCORE, MAX_SHOTS
     root = tk.Tk()
