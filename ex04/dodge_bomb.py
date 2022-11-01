@@ -87,8 +87,9 @@ def main():
         if tori_rct.colliderect(bomb_rct):                
             tkm.showinfo("GANE OVER", "また挑戦してね")
             return
-        if pg.time.get_ticks() >= 3000:
+        if pg.time.get_ticks() >= 10000:
             tkm.showinfo("GANE CREAR", "おめでとう！！")
+            return
 
         pg.display.update()
         clock.tick(1000)
